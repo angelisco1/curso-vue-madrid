@@ -7,7 +7,10 @@
     <!-- <datos-y-metodos></datos-y-metodos> -->
     <!-- <data-binding></data-binding> -->
     <!-- <directivas></directivas> -->
-    <computed-y-watchers></computed-y-watchers>
+    <!-- <computed-y-watchers></computed-y-watchers> -->
+    <!-- <propiedades-y-comunicacion></propiedades-y-comunicacion> -->
+    <!-- <slots-y-template></slots-y-template> -->
+    <formularios></formularios>
   </div>
 </template>
 
@@ -16,7 +19,10 @@ import ComponenteLocal from './components/ComponenteLocal';
 import DatosYMetodos from './components/DatosYMetodos';
 import DataBinding from './components/DataBinding/DataBinding';
 import Directivas from './components/Directivas/Directivas';
-import ComputedYWatchersVue from './components/ComputedYWatchers.vue';
+import ComputedYWatchers from './components/ComputedYWatchers';
+import PropiedadesYComunicacion from './components/PropiedadesYComunicacion/PropiedadesYComunicacion';
+import SlotsYTemplate from './components/SlotsYTemplate/SlotsYTemplate';
+import Formularios from './components/Formularios/Formularios';
 
 export default {
   components: {
@@ -24,7 +30,10 @@ export default {
     'datos-y-metodos': DatosYMetodos,
     'data-binding': DataBinding,
     'directivas': Directivas,
-    'computed-y-watchers': ComputedYWatchersVue
+    'computed-y-watchers': ComputedYWatchers,
+    'propiedades-y-comunicacion': PropiedadesYComunicacion,
+    'slots-y-template': SlotsYTemplate,
+    'formularios': Formularios
   },
 }
 

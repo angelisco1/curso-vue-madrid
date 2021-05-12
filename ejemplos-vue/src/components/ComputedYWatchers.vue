@@ -11,6 +11,7 @@
     <p>Edad: {{edad}}</p>
     <input type="number" v-model="edad">
     <hr>
+
     <p>Precio: {{precioConSimbolo}}</p>
     <input type="number" v-model="precio">
     <input type="radio" name="locale" value="es" @click="changeLocale" checked>ES

@@ -21,10 +21,28 @@
     <p v-show="estaLogueado">{{estaLogueado ? 'Estoy logueado :)' : 'No estoy logueado :('}}</p>
 
     <h3>v-for</h3>
-    <div v-for="(mascota, index) in mascotas" :key="mascota.id" class="caja-mascota">
+
+    <!-- <div v-for="(mascota, index) in mascotas" :key="mascota.id" class="caja-mascota">
       <img :src="mascota.imagen" alt="">
       <p>({{index}}): {{mascota.nombre}}</p>
-    </div>
+    </div> -->
+
+    <!-- <mascota
+      v-for="(mascota, index) in mascotas"
+      :key="mascota.id"
+      :index="index"
+      :imagen="mascota.imagen"
+      :nombre="mascota.nombre"
+    ></mascota> -->
+
+    <mascota
+      v-for="(mascota, index) in mascotas"
+      :key="mascota.id"
+      :index="index"
+      :mascota="mascota"
+    ></mascota>
+
+
     <!-- <div>
       <img src="mascotas[1].imagen" alt="">
       <p>{{mascotas[1].nombre}}</p>
@@ -60,7 +78,12 @@
 </template>
 
 <script>
+import Mascota from './Mascota';
+
 export default {
+  components: {
+    'mascota': Mascota
+  },
   data() {
     return {
       nombreMascota: 'Rocky',
@@ -131,7 +154,8 @@ export default {
 </script>
 
 <style scoped>
-  .caja-mascota {
+  /* Estos estilos los pasamos a Mascota.vue */
+  /* .caja-mascota {
     text-align: center;
     width: 300px;
     border: 1px solid black;
@@ -145,5 +169,5 @@ export default {
 
   li::first-letter {
     text-transform: capitalize;
-  }
+  } */
 </style>
