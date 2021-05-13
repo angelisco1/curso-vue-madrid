@@ -10,7 +10,8 @@
     <!-- <computed-y-watchers></computed-y-watchers> -->
     <!-- <propiedades-y-comunicacion></propiedades-y-comunicacion> -->
     <!-- <slots-y-template></slots-y-template> -->
-    <formularios></formularios>
+    <!-- <formularios></formularios> -->
+    <modificadores></modificadores>
   </div>
 </template>
 
@@ -23,6 +24,7 @@ import ComputedYWatchers from './components/ComputedYWatchers';
 import PropiedadesYComunicacion from './components/PropiedadesYComunicacion/PropiedadesYComunicacion';
 import SlotsYTemplate from './components/SlotsYTemplate/SlotsYTemplate';
 import Formularios from './components/Formularios/Formularios';
+import Modificadores from './components/Modificadores';
 
 export default {
   components: {
@@ -33,7 +35,8 @@ export default {
     'computed-y-watchers': ComputedYWatchers,
     'propiedades-y-comunicacion': PropiedadesYComunicacion,
     'slots-y-template': SlotsYTemplate,
-    'formularios': Formularios
+    'formularios': Formularios,
+    'modificadores': Modificadores
   },
 }
 
