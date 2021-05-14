@@ -1,0 +1,21 @@
+{
+  "733024590846318": {
+    "nombre": "Vendehumos",
+    "apellidos": "Numero 1",
+    "tema": "trading",
+    "rrss": [
+      "youtube",
+      "instagram"
+    ],
+    "numVotos": 49
+  },
+  "9415251917550485": {
+    "nombre": "Vendehumos",
+    "apellidos": "Numero 2",
+    "tema": "criptomonedas",
+    "rrss": [
+      "youtube"
+    ],
+    "numVotos": 2
+  }
+}

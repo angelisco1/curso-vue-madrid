@@ -1,5 +1,7 @@
-const http = require("http");
-const express = require("express");
+const fs = require('fs');
+const http = require('http');
+const express = require('express');
+const cors = require('cors');
 
 const datosVendehumos = {
   '432423': {
@@ -13,32 +15,60 @@ const datosVendehumos = {
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-  next();
-})
-
 app.get("/vendehumos", (req, res, next) => {
-  res.json({ data: datosVendehumos });
+  fs.readFile('./vendehumos.json', 'utf-8', (err, datosBDstr) => {
+    const datosVendehumos = JSON.parse(datosBDstr);
+    res.json({ data: datosVendehumos });
+  })
 });
 
 app.post("/vendehumos", (req, res, next) => {
-  const datos = req.body;
-  console.log(datos);
-  const id = (Math.random()+'').slice(2);
-  datosVendehumos[id] = datos;
-  res.json({ data: id });
+  const body = req.body;
+  console.log({body});
+
+  fs.readFile('./vendehumos.json', 'utf-8', (err, datosBDstr) => {
+    const datosBD = JSON.parse(datosBDstr);
+    console.log({datosBD})
+    const id = (Math.random()+'').slice(2);
+    // datosVendehumos[id] = body;
+    datosBD[id] = body;
+
+    fs.writeFile('./vendehumos.json', JSON.stringify(datosBD, null, 2), (err) => {
+      res.json({ data: id });
+    });
+  });
+});
+
+app.patch("/vendehumos/:id", (req, res, next) => {
+  const id = req.params.id;
+  const body = req.body;
+  const votos = Number(body.numVotos);
+
+  fs.readFile('./vendehumos.json', 'utf-8', (err, datosBDstr) => {
+    const datosBD = JSON.parse(datosBDstr);
+
+    datosBD[id].numVotos += votos;
+
+    fs.writeFile('./vendehumos.json', JSON.stringify(datosBD, null, 2), (err) => {
+      res.json({ data: id });
+    });
+  });
 });
 
 app.delete("/vendehumos/:id", (req, res, next) => {
   const id = req.params.id;
-  delete datosVendehumos[id];
-  res.json({ data: id });
+
+  fs.readFile('./vendehumos.json', 'utf-8', (err, datosBDstr) => {
+    const datosBD = JSON.parse(datosBDstr);
+    delete datosBD[id];
+
+    fs.writeFile('./vendehumos.json', JSON.stringify(datosBD, null, 2), (err) => {
+      res.json({ data: id });
+    });
+  });
 });
 
 http.createServer(app).listen(3000);
