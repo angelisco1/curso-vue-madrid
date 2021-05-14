@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Formulario</h2>
     <form @submit.prevent="guardarVendehumos">
       <div>
         <label for="nombre">Nombre</label>
@@ -43,7 +42,7 @@
 </template>
 
 <script>
-import { createVendehumos } from '../services/vendehumos';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
@@ -51,17 +50,21 @@ export default {
       nombre: '',
       apellidos: '',
       tema: '',
-      rrss: []
+      rrss: [],
+      numVotos: 0
     }
   },
   methods: {
-    guardarVendehumos(event) {
-      const nuevoVendehumos = this.$data;
-      // Guardar datos
-      createVendehumos(nuevoVendehumos)
-        .then(resp => {
-          console.log(resp);
-        })
+    ...mapActions(['crearVendehumos']),
+    guardarVendehumos() {
+      this.crearVendehumos(this.$data)
+      this.$router.push({name: 'Home'})
+      // const nuevoVendehumos = this.$data;
+      // // Guardar datos
+      // createVendehumos(nuevoVendehumos)
+      //   .then(resp => {
+      //     console.log(resp);
+      //   })
       // console.log(nuevoVendehumos)
       // Resetear los datos
     }

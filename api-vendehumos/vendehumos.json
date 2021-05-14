@@ -7,7 +7,7 @@
       "youtube",
       "instagram"
     ],
-    "numVotos": 49
+    "numVotos": 54
   },
   "9415251917550485": {
     "nombre": "Vendehumos",
@@ -16,6 +16,25 @@
     "rrss": [
       "youtube"
     ],
-    "numVotos": 2
+    "numVotos": 3
+  },
+  "784550077612614": {
+    "nombre": "adasd",
+    "apellidos": "asdasd",
+    "tema": "trading",
+    "rrss": [
+      "facebook"
+    ],
+    "numVotos": 4
+  },
+  "684587984089901": {
+    "nombre": "Vendehumos",
+    "apellidos": "Nuevo",
+    "tema": "trading",
+    "rrss": [
+      "instagram",
+      "twitter"
+    ],
+    "numVotos": 1
   }
 }

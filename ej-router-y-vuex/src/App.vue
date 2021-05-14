@@ -10,6 +10,7 @@
     <a href="/nuevo-usuario">Nuevo usuario</a> -->
     <router-link to="/">Home</router-link>
     <router-link to="/nuevo-usuario">Nuevo usuario</router-link>
+    <router-link to="/ejemplo-vuex">Ejemplo Vuex</router-link>
     <hr>
     <router-view></router-view>
   </div>

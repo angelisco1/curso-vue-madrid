@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { getUsuarioById } from '../services/usuarios';
+
 export default {
   data() {
     return {
@@ -16,15 +18,24 @@ export default {
       info: null
     }
   },
+  watch: {
+    async '$route'(ruta) {
+      const idUsuario = ruta.params.id;
+      this.idUsuario = idUsuario;
+      this.info = await getUsuarioById(idUsuario);
+    }
+  },
   async created() {
-    const resp = await fetch(
-      'https://jsonplaceholder.typicode.com/users/' + this.$route.params.id
-    );
-    const data = await resp.json();
-    this.info = data;
+    this.info = await getUsuarioById(this.$route.params.id)
+  },
+  beforeRouteEnter(to, from, next) {
+    const puedeEntrar = '343r34' === localStorage.getItem('token');
+    next(puedeEntrar);
+  },
+  beforeRouteUpdate(to, from, next) {
+    const puedeEntrar = '343r34' === localStorage.getItem('token');
+    next(puedeEntrar);
   }
-    // '$route'() {
-    // }
 }
 </script>
 

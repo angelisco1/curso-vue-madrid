@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Top Vendehumos 2021</h2>
+    <lista-vendehumos :listaVendehumos="listaVendehumos"></lista-vendehumos>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import ListaVendehumos from '../components/ListaVendehumos.vue'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
+  computed: {
+    ...mapGetters(['listaVendehumos'])
+  },
   components: {
-    HelloWorld
+    'lista-vendehumos': ListaVendehumos
   }
 }
 </script>

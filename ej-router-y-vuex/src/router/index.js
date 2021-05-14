@@ -2,24 +2,49 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import NuevoUsuario from '../views/NuevoUsuario.vue'
 import InfoUsuario from '../views/InfoUsuario.vue'
+// import EditarUsuario from '../views/EditarUsuario.vue'
+import Error from '../views/Error.vue'
+import Contador from '../views/Contador.vue'
+
+const rutasUsuarios = [
+  {
+    path: ':id/info',
+    component: InfoUsuario,
+    name: 'info-usuario'
+  },
+  {
+    path: 'editar/:id',
+    component: () => import('../views/EditarUsuario'),
+    name: 'editar-usuario'
+  }
+]
 
 const routes = [
   {
     path: '/usuarios',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: rutasUsuarios
   },
   {
     path: '/nuevo-usuario',
     component: NuevoUsuario
   },
   {
-    path: '/usuarios/:id',
-    component: InfoUsuario
+    path: '/ejemplo-vuex',
+    component: Contador
   },
+  // {
+  //   path: '/usuarios/:id',
+  //   component: InfoUsuario
+  // },
   {
     path: '/',
     redirect: '/usuarios'
+  },
+  {
+    path: '/:path(.*)*',
+    component: Error
   }
   // {
   //   path: '/about',

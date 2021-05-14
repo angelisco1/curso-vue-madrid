@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h2>Top Vendehumos 2021</h2>
-    <p>Aquí va la lista</p>
-    <vendehumos
-      v-for="vendehumos in listaVendehumos"
-      :key="vendehumos.id"
-      :vendehumos="vendehumos"
-    ></vendehumos>
+    <template v-if="listaVendehumos.length > 0">
+      <vendehumos
+        v-for="vendehumos in listaVendehumos"
+        :key="vendehumos.id"
+        :vendehumos="vendehumos"
+      ></vendehumos>
+    </template>
+    <p v-else>Humo no detectado :)</p>
   </div>
 </template>
 
@@ -20,16 +21,7 @@ export default {
   props: {
     listaVendehumos: {
       type: Array,
-      default: [
-        {
-          id: 1,
-          nombre: 'Vendehumos',
-          apellidos: 'Numero 1',
-          tema: 'criptomonedas',
-          rrss: ['youtube', 'instagram'],
-          numVotos: 28
-        }
-      ]
+      required: true
     }
   }
 }

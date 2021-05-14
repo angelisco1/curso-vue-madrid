@@ -7,14 +7,15 @@
       <li v-for="rrss in vendehumos.rrss" :key="rrss">{{rrss}}</li>
     </ul>
     <div>
-      <button>-</button>
+      <button @click="votar(-1)">-</button>
       <span>Votos: {{vendehumos.numVotos}}</span>
-      <button>+</button>
+      <button @click="votar(1)">+</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   props: {
     vendehumos: {
@@ -25,6 +26,12 @@ export default {
   computed: {
     nombreCompleto() {
       return `${this.vendehumos.nombre} ${this.vendehumos.apellidos}`
+    }
+  },
+  methods: {
+    ...mapActions(['votarVendehumos']),
+    votar(voto) {
+      this.votarVendehumos({id: this.vendehumos.id, voto: voto});
     }
   }
 }

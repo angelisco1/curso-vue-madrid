@@ -3,16 +3,6 @@ const http = require('http');
 const express = require('express');
 const cors = require('cors');
 
-const datosVendehumos = {
-  '432423': {
-    nombre: 'Vendehumos',
-    apellidos: 'Numero 1',
-    tema: 'criptomonedas',
-    rrss: ['youtube', 'instagram'],
-    numVotos: 28
-  }
-}
-
 const app = express();
 
 app.use(cors());
@@ -53,7 +43,7 @@ app.patch("/vendehumos/:id", (req, res, next) => {
     datosBD[id].numVotos += votos;
 
     fs.writeFile('./vendehumos.json', JSON.stringify(datosBD, null, 2), (err) => {
-      res.json({ data: id });
+      res.json({ data: datosBD[id] });
     });
   });
 });
